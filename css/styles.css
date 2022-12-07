@@ -1,0 +1,132 @@
+/* rubik-regular - latin */
+@font-face {
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    src: local(''),
+         url('../fonts/rubik-v21-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('../fonts/rubik-v21-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+  /* rubik-600 - latin */
+  @font-face {
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 600;
+    src: local(''),
+         url('../fonts/rubik-v21-latin-600.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('../fonts/rubik-v21-latin-600.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+  /* rubik-800italic - latin */
+  @font-face {
+    font-family: 'Rubik';
+    font-style: italic;
+    font-weight: 800;
+    src: local(''),
+         url('../fonts/rubik-v21-latin-800italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('../fonts/rubik-v21-latin-800italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+
+
+/* VARIABLES */
+:root{
+    /* --main-text-color : #fff; */
+    /* --main-bg-color : #fff; */
+    /* --main-font-size : 16px; */
+    /* --main-font-weight : 400; */
+    /* --main-line-height : 1.5; */
+}
+*{
+    box-sizing: border-box;
+}
+/* GENERAL */
+*,
+*::before,
+*::after{
+    box-sizing: inherit;
+}
+html{
+    height: 100%;
+    box-sizing: border-box;
+}
+img{
+    display: block;
+    height: auto;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #333333;
+    font-family: 'Rubik';
+    font-weight: 600;
+    
+}
+
+/* VISUALLY-HIDDEN */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+
+/* STICKY-FOOTER */
+.site-main{
+    flex-grow: 1;
+}
+
+
+/* Pokemon start */
+
+.item-js {
+    position: relative;
+    max-width: 220px;
+    width: 100%;
+    margin: 0 auto 30px;
+    padding-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px rgba(0 , 0 , 0 , 0.8);
+    border-top: 1px solid #d6c887;
+    border-bottom: 2px solid #d6c887;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.item-js:hover {
+    box-shadow: 0px 10px 25px rgba(0 , 0 , 0 , 1);
+}
+
+.num-js {
+    position: absolute;
+    top: -1px;
+    left: 0px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 10px 0 10px;
+    background-color: #d6c887;
+}
+
+.badge-js {
+    display: flex;
+    justify-content: center;
+}
+
+.text-js {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    border-radius: 0 0 10px 10px;
+    margin-bottom: 0px;
+    background-color: #d6c887;
+}
+
+/* Pokemon end */
