@@ -150,24 +150,57 @@ elList.addEventListener("click" , (evt)=> {
         const findBookmark = pokemons.find(element => element.id == elbook) ;
         
         newBookmarkArr.push(findBookmark);
-        // console.log(newBookmarkArr);   
+        // console.log(newBookmarkArr);  
+        renderBookmark(newBookmarkArr) 
     }
     
     
-    newBookmarkArr.forEach(item => {
+});
+
+function renderBookmark (book){
+    
+    
+    const elTemplate = document.querySelector(".poke-template").content;
+    const elFragment = document.createDocumentFragment();
+    
+    elBookmarkList.innerHTML = ""
+    
+    book.forEach(poke => {
+        const elClone = elTemplate.cloneNode(true);
         
-        elBookmarkList.innerHTML = ""
+        elClone.querySelector(".poke-num").textContent = poke.num;
+        elClone.querySelector(".poke-img").src = poke.img;
+        elClone.querySelector(".poke-img").dataset.id = poke.id;
+        elClone.querySelector(".poke-img").alt = poke.name
+        elClone.querySelector(".poke-badje").textContent = poke.weight;
+        elClone.querySelector(".poke-count").textContent = `candyCount: ${poke.candy_count}`;
+        elClone.querySelector(".poke-name").textContent = poke.name;
+        elClone.querySelector(".poke-text").textContent = poke.weaknesses.join(" ");
+        elClone.querySelector(".poke-star").dataset.id = poke.id;
         
-        const newItem = document.createElement("li");
-        // newItem.textContent = item
-        // console.log(newItem);
-        
-        elBookmarKFragment.appendChild(newItem)
-        // console.log(elBookmarKFragment);
+        elFragment.appendChild(elClone);
         
     });
-    elBookmarkList.appendChild(elBookmarKFragment)
+    
+    elBookmarkList.appendChild(elFragment)
+    
+    
+};
+
+
+elBookmarkList.addEventListener("click" , ()=> {
+    
+    if(evt.target.matches(".poke-img")){
+        const deletBtn = evt.target.dataset.id;
+        const delFind = pokemons.find(element => element.img == deletBtn)
+        
+        newBookmarkArr.splice(delFind , 1);
+        renderBookmark(newBookmarkArr) 
+    }
+    
+    
 })
+
 
 
 
