@@ -1,29 +1,29 @@
 /* rubik-regular - latin */
 @font-face {
-    font-family: 'Rubik';
+    font-family: "Rubik";
     font-style: normal;
     font-weight: 400;
-    src: local(''),
-    url('../fonts/rubik-v21-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-    url('../fonts/rubik-v21-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    src: local(""),
+    url("../fonts/rubik-v21-latin-regular.woff2") format("woff2"), /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url("../fonts/rubik-v21-latin-regular.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* rubik-600 - latin */
 @font-face {
-    font-family: 'Rubik';
+    font-family: "Rubik";
     font-style: normal;
     font-weight: 600;
-    src: local(''),
-    url('../fonts/rubik-v21-latin-600.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-    url('../fonts/rubik-v21-latin-600.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    src: local(""),
+    url("../fonts/rubik-v21-latin-600.woff2") format("woff2"), /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url("../fonts/rubik-v21-latin-600.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* rubik-800italic - latin */
 @font-face {
-    font-family: 'Rubik';
+    font-family: "Rubik";
     font-style: italic;
     font-weight: 800;
-    src: local(''),
-    url('../fonts/rubik-v21-latin-800italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-    url('../fonts/rubik-v21-latin-800italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    src: local(""),
+    url("../fonts/rubik-v21-latin-800italic.woff2") format("woff2"), /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url("../fonts/rubik-v21-latin-800italic.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 
@@ -53,7 +53,7 @@ body{
     margin: 0;
     padding: 0;
     background-color: #333333;
-    font-family: 'Rubik';
+    font-family: "Rubik";
     font-weight: 600;
     
 }
@@ -132,15 +132,6 @@ body{
     background-color: #d6c887;
 }
 
-@media only screen and (min-width:992px){
-    
-    .item-js {
-        margin-right: 0;
-        margin-left: 0;
-    }
-    
-}
-
 /* Pokemon end */
 
 /* Form start */
@@ -191,3 +182,52 @@ body{
 
 
 /* Form end */
+
+/* Bokmark start */
+
+.poke__bookmark {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+.btn-bookmark {
+    background-image: url("../image/bookmark-solid.svg");
+    width: 20px;
+    height: 30px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
+}
+
+.poke-star {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    opacity: 0.2;
+    transition: 0.5s;
+}
+
+.poke-star--js {
+    opacity: 1;
+}
+
+/* Bokmark end */
+
+
+
+@media only screen and (min-width:992px){
+    
+    .item-js {
+        margin-right: 0;
+        margin-left: 0;
+    }
+    
+}

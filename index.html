@@ -12,24 +12,62 @@
 <body>
     
     
-    <section class="pokemon">
+    <header class="pokemon">
         <div class="container">
             <img class="w-100 mx-auto mb-5" src="image/qqq.png" alt="pokemon-img">
             <form  class="form mb-5 d-md-flex" autocomplete="off">
-                <input type="text" class="input-search form-control  mb-4 mb-md-0 me-md-3" name="user_search" placeholder="Search ...">
+                <input type="search" class="input-search form-control  mb-4 mb-md-0 me-md-3" name="user_search" placeholder="Search ...">
                 <select class="input-select form-select  mb-4 mb-md-0 me-md-3" aria-label="Default select example">
                     <option selected value="all">All</option>
                 </select>
+                <input type="number" class="input-min form-control  mb-4 mb-md-0 me-md-3" name="candy_count_min" placeholder="Min to">
+                <input type="number" class="input-max form-control  mb-4 mb-md-0 me-md-3" name="candy_count_min" placeholder="Max to">
                 <select class="input-sort form-select  mb-4 mb-md-0 me-md-3" aria-label="Default select example">
-                    <option selected value="all">All Sort</option>
+                    <option selected hidden>All Sort</option>
+                    <option value="a-z">A-Z</option>
+                    <option value="z-a">Z-A</option>
+                    <option value="thin">from thin to fat</option>
+                    <option value="weight">from fat to thin</option>
                 </select>
                 <button class="btn-js">Submit</button>
             </form>
-            <ul class="pokemon__list d-flex justify-content-between flex-wrap ps-0 list-unstyled">
-                
+        </div>
+    </header>
+    
+    
+    <!-- Main start -->
+    
+    <main class="site-main">
+        
+        <section>
+            <div class="container">
+                <div class="poke__bookmark">
+                    <button class="btn-bookmark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"></button>
+                </div>
+                <ul class="pokemon__list d-flex justify-content-center flex-wrap ps-0 list-unstyled justify-content-lg-start">
+                    
+                </ul>
+            </div>
+        </section>
+        
+    </main>
+    
+    <!-- Main end -->
+    
+    
+    <!-- Canvas start -->
+    
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasRightLabel">Bookmark</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="bookmark__list">
+
             </ul>
         </div>
-    </section>
+    </div>
     
     
     
@@ -38,17 +76,21 @@
     <template class="poke-template">
         <li class="poke-item" data-aos="fade-up"  data-aos-duration="2000">
             <span class="poke-num"></span>
+            <img class="poke-star" src="image/star.svg" alt="star img">
             <img class="poke-img"  alt="">
-            <div class="d-flex justify-content-center">
+            <h3 class="poke-name text-white  text-center  fs-4  mb-4">
+                
+            </h3>
+            <div class="d-flex flex-column align-items-center">
                 <span class="poke-badje badge text-bg-warning mb-3">
-
+                    
+                </span>
+                <span class="poke-count badge text-bg-danger mb-3">
+                    
                 </span>
             </div>
-            <h3 class="poke-name text-white  text-center  fs-4  mb-4">
-
-            </h3>
             <p class="poke-text">
-
+                
             </p>
         </li>
     </template>
@@ -58,6 +100,7 @@
     
     
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/pokemons.js"></script>
     <script src="js/main.js"></script>
     
