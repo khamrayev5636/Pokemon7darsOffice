@@ -13,14 +13,16 @@
  
  //  Bookmark
  const elBookmark = document.querySelector(".poke-star");
- const elBookmarkList = document.querySelector(".bookmark__list")
+ const elBookmarkList = document.querySelector(".bookmark__list");
+ const elDeleteBookmark = document.querySelector(".delete__bookmark");
  
  
  // const pokeSlice = pokemons.slice(0 , 10)
  
  //  Pokemon DOMga render qilish
  
- function renderPokimons(item) {
+ function renderPokimons(item , regex = "") {
+    
     
     const elTemplate = document.querySelector(".poke-template").content;
     const elFragment = document.createDocumentFragment();
@@ -36,7 +38,14 @@
         elClone.querySelector(".poke-img").alt = poke.name
         elClone.querySelector(".poke-badje").textContent = poke.weight;
         elClone.querySelector(".poke-count").textContent = `candyCount: ${poke.candy_count}`;
-        elClone.querySelector(".poke-name").textContent = poke.name;
+        
+        if(regex.source = "(?:)" && regex){
+            elClone.querySelector(".poke-name").innerHTML = poke.name.replace(regex , `<mark class="bg-warning rounded">${regex.source.toLowerCase()}</mark>`);
+            
+        } else {
+            
+            elClone.querySelector(".poke-name").textContent = poke.name;
+        }
         elClone.querySelector(".poke-text").textContent = poke.weaknesses.join(" ");
         elClone.querySelector(".poke-star").dataset.id = poke.id;
         
@@ -140,67 +149,74 @@ function renderSort(pokeSort , value){
 // Bookmark start
 
 const newBookmarkArr = [];
-const elBookmarKFragment = document.createDocumentFragment()
+
+
 
 elList.addEventListener("click" , (evt)=> {
     
     if(evt.target.matches(".poke-star")){
         
-        const elbook = Number(evt.target.dataset.id)
-        const findBookmark = pokemons.find(element => element.id == elbook) ;
+        const elbook = evt.target.dataset.id;
+        const findBookmark = pokemons.find(element => element.id == elbook);
         
-        newBookmarkArr.push(findBookmark);
-        // console.log(newBookmarkArr);  
-        renderBookmark(newBookmarkArr) 
+        if(!newBookmarkArr.includes(findBookmark)){
+
+            newBookmarkArr.push(findBookmark);
+            renderBookmark(newBookmarkArr , elBookmarkList) 
+        }
     }
     
     
 });
 
-function renderBookmark (book){
+elBookmarkList.addEventListener("click" , evt =>{
     
+    if(evt.target.matches(".delete__bookmark")) {
+        
+        const deleteBookmark = evt.target.dataset.bookmarkId;
+        
+        const deleteFind = newBookmarkArr.findIndex(item => item.id == deleteBookmark);
+        
+        newBookmarkArr.splice(deleteFind , 1);
+        
+        renderBookmark(newBookmarkArr , elBookmarkList)
+    }
+})
+
+
+function renderBookmark (arr , node){
+    
+    elBookmarkList.innerHTML = ""
     
     const elTemplate = document.querySelector(".poke-template").content;
     const elFragment = document.createDocumentFragment();
     
-    elBookmarkList.innerHTML = ""
     
-    book.forEach(poke => {
+    arr.forEach(poke => {
         const elClone = elTemplate.cloneNode(true);
         
         elClone.querySelector(".poke-num").textContent = poke.num;
         elClone.querySelector(".poke-img").src = poke.img;
-        elClone.querySelector(".poke-img").dataset.id = poke.id;
         elClone.querySelector(".poke-img").alt = poke.name
-        elClone.querySelector(".poke-badje").textContent = poke.weight;
-        elClone.querySelector(".poke-count").textContent = `candyCount: ${poke.candy_count}`;
         elClone.querySelector(".poke-name").textContent = poke.name;
-        elClone.querySelector(".poke-text").textContent = poke.weaknesses.join(" ");
-        elClone.querySelector(".poke-star").dataset.id = poke.id;
+        elClone.querySelector(".poke-badje").textContent = poke.weight;
+        elClone.querySelector(".poke-count").classList.add("d-none")
+        elClone.querySelector(".poke-name").textContent = poke.name;
+        elClone.querySelector(".poke-text").classList.add("d-none");
+        elClone.querySelector(".poke-star").classList.add("d-none");
+        elClone.querySelector(".delete__bookmark").dataset.bookmarkId = poke.id;
+        elClone.querySelector(".delete__bookmark").classList.remove("visually-hidden");
         
         elFragment.appendChild(elClone);
         
     });
     
-    elBookmarkList.appendChild(elFragment)
-    
-    
+    node.appendChild(elFragment)   
 };
 
 
-elBookmarkList.addEventListener("click" , ()=> {
-    
-    if(evt.target.matches(".poke-img")){
-        const deletBtn = evt.target.dataset.id;
-        const delFind = pokemons.find(element => element.img == deletBtn)
-        
-        newBookmarkArr.splice(delFind , 1);
-        renderBookmark(newBookmarkArr) 
-    }
-    
-    
-})
 
+// Bookmark end
 
 
 
@@ -219,7 +235,7 @@ elForm.addEventListener("submit" , (evt)=> {
     
     if(fullFilter.length > 0){
         renderSort(fullFilter,inputSort)
-        renderPokimons(fullFilter);
+        renderPokimons(fullFilter , newRegex);
     }else {
         elList.textContent = "Not Found 404"
     }

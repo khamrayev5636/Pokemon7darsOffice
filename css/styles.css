@@ -90,7 +90,6 @@ body{
     border-radius: 10px;
     box-shadow: 0 3px 15px rgba(0 , 0 , 0 , 0.8);
     border-top: 1px solid #d6c887;
-    border-bottom: 2px solid #d6c887;
     cursor: pointer;
 }
 
@@ -117,6 +116,10 @@ body{
 .badge-js {
     display: flex;
     justify-content: center;
+}
+
+.poke-name {
+    text-transform: capitalize;
 }
 
 .poke-text {
@@ -215,9 +218,12 @@ body{
     transition: 0.5s;
 }
 
-.poke-star--js {
+.poke-star:hover {
+    background-image: url("../image/star.svg");
     opacity: 1;
 }
+
+
 
 /* Bokmark end */
 
